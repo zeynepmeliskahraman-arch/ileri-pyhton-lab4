@@ -1,1 +1,0 @@
-# ileri-pyhton-lab4
