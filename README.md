@@ -1,4 +1,7 @@
 # İleri Python Lab 4 - Uzay Projesi
+Zeynep Melis Kahraman
+20253005009
+Veri Bilimi ve Analitiği
 
 ## Görev 4 Önbellek Performans Ölçümleri (Adım n = 20)
 * **Önbelleksiz (Uncached) Süre:** ~1.45 saniye (tekrar eden hesaplamalar nedeniyle yavaştır)
