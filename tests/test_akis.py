@@ -64,3 +64,14 @@ def test_istatistik():
     assert "DÜNYA" in buyuk
     assert toplam == 7  # Toplam bağlantı sayısı 7'dir
     assert hizli_yolculuk(mesafe=15) == 5.0
+
+import time
+from typing import Generator
+
+def aralik(sure: int) -> Generator[float, None, None]:
+    """Zamanlayıcı üreteci: Belirtilen süre boyunca geçen zamanı üretir."""
+    baslangic = time.time()
+    while time.time() - baslangic < sure:
+        yield time.time() - baslangic
+        time.sleep(0.1)  # CPU'yu yormamak için kısa bir uyku (meşgul beklemeyi önler)
+        

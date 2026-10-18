@@ -58,3 +58,13 @@ def rota_sayaci(baglantilar: Dict[str, List[str]]):
             toplam += rota_sayisi(komsu, adim - 1)
         return toplam
     return rota_sayisi
+
+import time
+
+def aralik(sure: int) -> Generator[float, None, None]:
+    """Zamanlayıcı üreteci: Belirtilen süre boyunca geçen zamanı üretir."""
+    baslangic = time.time()
+    while time.time() - baslangic < sure:
+        yield time.time() - baslangic
+        time.sleep(0.1)  # CPU'yu yormamak için kısa bir uyku (meşgul beklemeyi önler)
+        
