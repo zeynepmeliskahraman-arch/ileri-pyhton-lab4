@@ -1,5 +1,6 @@
 from itertools import islice, takewhile
 import pytest
+from istatistik import analiz_et, hizli_yolculuk, galaksi_verisi
 from uzay_oyunu.akis import (
     fibonacci,
     yakit_gostergesi,
@@ -55,3 +56,11 @@ def test_rota_sayaci():
     }
     say = rota_sayaci(baglantilar)
     assert say("dünya", 3) == 5
+
+    from istatistik import analiz_et, hizli_yolculuk, galaksi_verisi
+
+def test_istatistik():
+    buyuk, iki_plus, toplam = analiz_et(galaksi_verisi)
+    assert "DÜNYA" in buyuk
+    assert toplam == 7  # Toplam bağlantı sayısı 7'dir
+    assert hizli_yolculuk(mesafe=15) == 5.0
