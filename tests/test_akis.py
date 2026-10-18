@@ -1,5 +1,6 @@
 from itertools import islice, takewhile
-from uzay_oyunu.akis import fibonacci
+import pytest
+from uzay_oyunu.akis import fibonacci, yakit_gostergesi
 
 def test_fibonacci_genel():
     g = fibonacci()
@@ -19,3 +20,14 @@ def test_fibonacci_tek_kullanimlik():
     ilk_calisma = list(islice(g, 5))
     ikinci_calisma = list(islice(g, 5))
     assert ilk_calisma != ikinci_calisma
+
+    import pytest
+
+def test_yakit_gostergesi():
+    assert list(yakit_gostergesi(100, 30)) == [70, 40, 10, 0]
+
+    g = yakit_gostergesi(10, 5)
+    assert next(g) == 5
+    assert next(g) == 0
+    with pytest.raises(StopIteration):
+        next(g)
