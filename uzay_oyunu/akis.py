@@ -42,3 +42,19 @@ def uzun_yolculuklar(kayitlar: Generator[Tuple[str, str, int], None, None], esik
     for kaynak, hedef, yakit in kayitlar:
         if yakit > esik:
             yield (kaynak, hedef, yakit)
+
+from functools import lru_cache
+from typing import Dict, List
+
+def rota_sayaci(baglantilar: Dict[str, List[str]]):
+    """Verilen galaksi bağlantılarına göre belirli adımda kaç farklı rota olduğunu hesaplayan önbellekli sayıcı döndürür."""
+    @lru_cache(maxsize=None)
+    def rota_sayisi(gezegen: str, adim: int) -> int:
+        if adim == 0:
+            return 1
+        toplam = 0
+        komsular = baglantilar.get(gezegen, [])
+        for komsu in komsular:
+            toplam += rota_sayisi(komsu, adim - 1)
+        return toplam
+    return rota_sayisi

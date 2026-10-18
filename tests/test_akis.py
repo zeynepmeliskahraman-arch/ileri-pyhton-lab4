@@ -1,6 +1,13 @@
 from itertools import islice, takewhile
 import pytest
-from uzay_oyunu.akis import fibonacci, yakit_gostergesi, satirlari_oku, ayristir, uzun_yolculuklar
+from uzay_oyunu.akis import (
+    fibonacci,
+    yakit_gostergesi,
+    satirlari_oku,
+    ayristir,
+    uzun_yolculuklar,
+    rota_sayaci,
+)
 
 def test_fibonacci_genel():
     g = fibonacci()
@@ -21,8 +28,6 @@ def test_fibonacci_tek_kullanimlik():
     ikinci_calisma = list(islice(g, 5))
     assert ilk_calisma != ikinci_calisma
 
-    import pytest
-
 def test_yakit_gostergesi():
     assert list(yakit_gostergesi(100, 30)) == [70, 40, 10, 0]
 
@@ -31,12 +36,22 @@ def test_yakit_gostergesi():
     assert next(g) == 0
     with pytest.raises(StopIteration):
         next(g)
+
 def test_seyir_boru_hatti():
-    # Toplam yakıt kontrolü (88 olmalı)
     toplam_yakit = sum(y for _, _, y in ayristir(satirlari_oku("veri/seyir.txt")))
     assert toplam_yakit == 88
 
-    # Eşik değeri 10'dan büyük olan hedefler
     kayitlar = ayristir(satirlari_oku("veri/seyir.txt"))
     uzunlar = [hedef for _, hedef, _ in uzun_yolculuklar(kayitlar, 10)]
     assert uzunlar == ['sirius', 'centauri', 'orion', 'kara_delik']
+
+def test_rota_sayaci():
+    baglantilar = {
+        "dünya": ["sirius", "orion"],
+        "sirius": ["orion", "kara_delik"],
+        "orion": ["centauri", "sirius"],
+        "centauri": ["orion"],
+        "kara_delik": []
+    }
+    say = rota_sayaci(baglantilar)
+    assert say("dünya", 3) == 5
