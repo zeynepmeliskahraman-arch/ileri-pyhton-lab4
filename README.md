@@ -13,3 +13,4 @@ time.sleep() kullanmadan, bir while döngüsünün sürekli olarak time.time() v
 
 time.sleep ile Farkı Nedir?
 time.sleep(sure) fonksiyonu işletim sistemine sinyal göndererek programı belirli bir süre uyku moduna alır. İşletim sistemi bu süreçte işlemci çekirdeğini diğer programlara ve sistem görevlerine devreder. Böylece CPU boşa yorulmaz ve sistem kaynakları verimli kullanılır.
+lab5 ödevi de bunun içerisinde bulunuyor.
