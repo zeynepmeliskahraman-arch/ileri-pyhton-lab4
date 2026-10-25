@@ -12,3 +12,12 @@ def sure_olc(func):
         print(f"{func.__name__}: {sure:.4f} sn")
         return sonuc
     return wrapper
+
+def say(func):
+    """Fonksiyonun kaç kez çağrıldığını bir nitelikte sayan dekoratör."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        wrapper.cagri += 1
+        return func(*args, **kwargs)
+    wrapper.cagri = 0
+    return wrapper

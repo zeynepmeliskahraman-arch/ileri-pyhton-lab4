@@ -14,3 +14,17 @@ def test_sure_olc():
     # 2. Adlı argümanlarla çağrı çalışıyor mu ve sonuç doğru dönüyor mu?
     sonuc = test_fonk(5, y=20)
     assert sonuc == 25
+
+    from functools import lru_cache
+from uzay_oyunu.dekoratorler import say
+
+def test_say_dekoratoru():
+    @say
+    def topla(a, b):
+        return a + b
+
+    topla(1, 2)
+    topla(3, 4)
+    
+    assert topla.cagri == 2
+    
