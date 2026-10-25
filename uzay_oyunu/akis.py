@@ -67,4 +67,3 @@ def aralik(sure: int) -> Generator[float, None, None]:
     while time.time() - baslangic < sure:
         yield time.time() - baslangic
         time.sleep(0.1)  # CPU'yu yormamak için kısa bir uyku (meşgul beklemeyi önler)
-        
